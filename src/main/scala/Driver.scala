@@ -8,14 +8,14 @@ object Driver extends App {
   private val factorialResult = factorialObject.find(Seq(2, 5, 6, 19))
   factorialResult.onComplete {
     case Failure(exception) => println(s"${exception.getMessage}")
-    case Success(value) => println(s"FindFactorial Result: $value")
+    case Success(value) => println(s"FindFactorial > 6 ^ number Result: $value")
   }
 
   private val averageObject = new ChainOperations
-  private val averageResult = averageObject.findAverageAfterChainingOperations(Seq(6, 2, 3, 8))
+  private val averageResult = averageObject.chainOfOperations(Seq(2,4,6))
   averageResult.onComplete {
     case Failure(exception) => println(s"${exception.getMessage}")
-    case Success(value) => println(s"FindAverage Result: $value")
+    case Success(value) => println(s"FindAverage after chaining Result: $value")
   }
 
   private val squareExpressionObject = new SquareTheExpression
@@ -25,6 +25,7 @@ object Driver extends App {
     case Success(value) => println(s"Square of Expression Result: $value")
   }
   private val additionOperatorObject = Calculator.calculate("+", Seq(7, 2, 9))
+  private val additionOperatorAnotherObject = Calculator.calculate("+", Seq(7, 2))
   private val subtractionOperatorObject = Calculator.calculate("-", Seq(7, 2))
   private val multiplicationOperatorObject = Calculator.calculate("*", Seq(17, 2))
   private val divisionOperatorObject = Calculator.calculate("/", Seq(14, 2))
@@ -32,13 +33,17 @@ object Driver extends App {
   private val squareRootOperatorObject = Calculator.calculate("sqrt", Seq(49))
   private val factorialOperatorObject = Calculator.calculate("!", Seq(8))
   private val sumOperatorObject = Calculator.calculate("sum", Seq(7, 2, 9, 8))
-  private val gcdOperatorObject = Calculator.calculate("gcd", Seq(12, 3, 6))
+  private val gcdOperatorObject = Calculator.calculate("gcd", Seq(12, 3))
   private val oddOperatorObject = Calculator.calculate("odd", Seq(7, 2, 9, 4, 11, 68))
   private val evenOperatorObject = Calculator.calculate("even", Seq(7, 2, 9, 4, 11, 68))
   private val fibonacciOperatorObject = Calculator.calculate("fibonacci", Seq(5))
   private val equalOperatorObject = Calculator.calculate("=", Seq(5, 9))
 
   additionOperatorObject.onComplete {
+    case Failure(exception) => println(s"${exception.getMessage}")
+    case Success(value) => println(s"Addition Result: $value")
+  }
+  additionOperatorAnotherObject.onComplete {
     case Failure(exception) => println(s"${exception.getMessage}")
     case Success(value) => println(s"Addition Result: $value")
   }

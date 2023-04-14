@@ -6,7 +6,7 @@ class FibonacciOperator extends Operator {
   override protected def execute(operands: Seq[Double]): Seq[Double] = {
     fibonacciNumbers(operands(0),0,1)
   }
-  private def fibonacciNumbers(count: Double, firstTerm: Double, secondTerm: Double): Seq[Double] = {
+   def fibonacciNumbers(count: Double, firstTerm: Double, secondTerm: Double): Seq[Double] = {
     if (count == 0) Seq()
     else if (count == 1) Seq(firstTerm)
     else Seq(firstTerm) ++ fibonacciNumbers(count - 1, secondTerm, firstTerm + secondTerm)
